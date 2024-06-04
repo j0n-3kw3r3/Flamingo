@@ -1,11 +1,10 @@
-
-import { Button } from './components/ui/button'
+import Router from './router';
 
 function App() {
 
   return (
     <>
-        <Button className=' bg-green-500' >Click me</Button>   
+      <Router />
     </>
   );
 }
