@@ -15,7 +15,7 @@ const Router: React.FC = () => {
         <Route path="/dashboard/project" element={<Project />} />
         <Route path="/dashboard/pool" element={<Pool />} />
         <Route path="/dashboard/learn" element={<Learn />} />
-        <Route path="/dashboard/coach" element={<Coach />} />
+        <Route path="/dashboard/flamingo-coach" element={<Coach />} />
         <Route
           path="*"
           element={
