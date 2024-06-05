@@ -6,10 +6,9 @@ import { useLocation } from "react-router-dom";
 import down from "../assets/sidebardown.svg";
 import { Link } from "react-router-dom";
 
-
 export function Sidebar() {
-   const location = useLocation();
-   const path = location.pathname;
+  const location = useLocation();
+  const path = location.pathname;
 
   return (
     <aside className="p-4 pl-0 space-y-4 overflow-y-none bg-[#2F187E] shadow-md w-[15rem] relative">

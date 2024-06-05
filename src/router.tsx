@@ -1,9 +1,9 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Overview from "./components/pages/dashboard/ovevriew";
-import Project from "./components/pages/dashboard/project";
-import Pool from "./components/pages/dashboard/pool";
-import Coach from "./components/pages/dashboard/coach";
-import Learn from "./components/pages/dashboard/learn";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Overview from "./pages/dashboard/overview";
+import Project from "./pages/dashboard/project";
+import Pool from "./pages/dashboard/pool";
+import Learn from "./pages/dashboard/learn";
+import Coach from "./pages/dashboard/coach";
 
 
 const Router: React.FC = () => {
