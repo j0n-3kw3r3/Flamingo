@@ -2,6 +2,8 @@ import { Sidebar } from "@/components/Sidebar";
 import { TopBar } from "@/components/TopBar";
 import { useState } from "react";
 import flg from "../../../assets/fundvolumeflamingo.svg";
+import DashboardChart from "@/components/chart/dashboard";
+import OverviewTable from "@/components/overview";
 
 function Overview() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -10,7 +12,7 @@ function Overview() {
   const [convertedValue, setConvertedValue] = useState(0);
   const [currency, setCurrency] = useState("USD");
 
-  const handleCurrencyChange = (event:any) => {
+  const handleCurrencyChange = (event: any) => {
     setCurrency(event.target.value);
   };
 
@@ -70,9 +72,8 @@ function Overview() {
             </div>
           </section>
 
-          <section className="bg-white shadow col-span-7 rounded p-4">
-            <h2 className="text-2xl font-bold mb-2">Section 2</h2>
-            <section className="bg-white shadow rounded p-4 col-span-8"></section>
+          <section className="bg-[#2F187E] shadow col-span-7 rounded-lg p-4">
+            <DashboardChart />
           </section>
 
           <section className="bg-white shadow rounded p-4 col-span-8">
@@ -111,7 +112,11 @@ function Overview() {
               </div>
             </div>
 
-            {activeTab === "overview" && <div>Overview Content</div>}
+            {activeTab === "overview" && (
+              <div>
+                <OverviewTable/>
+              </div>
+            )}
             {activeTab === "pool" && <div>Pool Content</div>}
             {activeTab === "analytics" && <div>Analytics Content</div>}
             {activeTab === "about" && <div>About Content</div>}
