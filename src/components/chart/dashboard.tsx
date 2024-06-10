@@ -20,7 +20,7 @@ const forexData = {
       data: [103.5, 107.2, 101.8, 108.5, 105.0, 109.2, 105.5],
       fill: false,
       backgroundColor: "white",
-      borderColor: "#ffffff47",
+      borderColor: "#D62898",
       tension: 0.25,
       capBezierPoints: true,
     },
