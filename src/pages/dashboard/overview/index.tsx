@@ -80,7 +80,7 @@ function Overview() {
         <TopBar />
 
         <main className="grid h-screen overflow-y-auto grid-cols-12 gap-4 p-4">
-          <section className=" shadow col-span-5 rounded ">
+          <section className="col-span-5 rounded ">
             <div className="grid grid-cols-2 gap-[.0625rem]">
               <div className="bg-gradient-to-r from-[#30187ee4] to-[#D62898] text-white shadow rounded-tl-lg p-6">
                 <h3 className=" text-xs ">FLM Market Cap</h3>
@@ -118,7 +118,7 @@ function Overview() {
             </div>
           </section>
 
-          <section className="bg-[#2F187E] shadow col-span-7 h-fit rounded-lg p-4">
+          <section className="bg-[#2F187E] shadow col-span-7 h-[20rem] rounded-lg p-4">
             <DashboardChart />
           </section>
 
