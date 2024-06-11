@@ -14,9 +14,9 @@ function Overview() {
 
   const [fromCurrency, setFromCurrency] = useState("BTC");
   const [toCurrency, setToCurrency] = useState("USD");
-  const [amount, setAmount] = useState(47334);
-  const [, setConvertedAmount] = useState(47334);
-  const [rate] = useState(1);
+  const [amount, setAmount] = useState(0);
+  const [convertedAmount, setConvertedAmount] = useState(0);
+  const [rate] = useState(66776.8);
 
   const handleFromCurrencyChange = (event: any) => {
     setFromCurrency(event.target.value);
@@ -34,7 +34,8 @@ function Overview() {
   const convert = () => {
     // Replace with your conversion logic using an API or library
     const converted = amount * rate;
-    setConvertedAmount(converted);
+    const floored = Math.floor(converted * 100) / 100;
+    setConvertedAmount(floored);
   };
 
   const aboutData = [
@@ -227,8 +228,8 @@ function Overview() {
           </section>
 
           {activeTab !== "overview" && activeTab !== "about" && (
-            <section className="bg-[#2F187E] shadow h-fit rounded p-6 text-white text-sm col-span-4">
-              <h1 className="  font-normal text-center mb-4">Conversion Calculator</h1>
+            <section className="bg-[#2F187E] shadow h-fit rounded-lg p-6 text-white text-sm col-span-4">
+              <h1 className="  font-normal mb-4">Conversion Calculator</h1>
               <div className="flex flex-col gap-6">
                 <div className="">
                   <label className="block mb-2  text-sm " htmlFor="from">
@@ -259,12 +260,9 @@ function Overview() {
                     To
                   </label>
                   <div className="flex gap-1 ">
-                    <input
-                      id="amount"
-                      type="number"
-                      onChange={handleAmountChange}
-                      className="w-1/2 block px-3 py-2 border-[#D62898] border bg-transparent rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                    />
+                    <div className="w-1/2 block px-3 py-2 border-[#D62898] border bg-transparent rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                      {convertedAmount}
+                    </div>
                     <select
                       id="to"
                       value={toCurrency}
@@ -286,7 +284,7 @@ function Overview() {
                 </div>
               </div>
 
-              <div className=" my-4">
+              <div className="mt-[5rem] my-4">
                 <button
                   onClick={convert}
                   className="px-4 py-2 bg-gradient-to-r from-[#d6289954] to-[#D62898]  w-full text-white  rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -294,10 +292,8 @@ function Overview() {
                   Exchange
                 </button>
               </div>
-              <div className="flex flex-row ">
-                <div className="w-1/2 mr-2">
-                  <label className="block mb-2  text-sm ">Exchange Rate</label>
-                </div>
+              <div className="flex justify-between ">
+                <div className=" text-sm ">Exchange Rate</div>
                 <div className=" text-white">{rate}</div>
               </div>
             </section>
