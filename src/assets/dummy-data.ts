@@ -1,3 +1,6 @@
+
+import articleimage from "../assets/articleimage.png";
+
 export const Cryptodata = [
     {
         rank: 1,
@@ -183,3 +186,48 @@ export const Cryptodata = [
     // ...
 ]
 
+
+export const articles = [
+    {
+        image: articleimage,
+        title: "The Rise of E-commerce in the Digital Age",
+        author: "Jennifer Lee",
+        date: "3rd May 2024",
+        url: "#"
+    },
+    {
+        image: articleimage,
+        title: "The Future of Artificial Intelligence in Healthcare",
+        author: "Michael Johnson",
+        date: "10th May 2024",
+        url: "#"
+    },
+    {
+        image: articleimage,
+        title: "The Impact of Blockchain Technology on Finance",
+        author: "Sarah Thompson",
+        date: "17th May 2024",
+        url: "#"
+    },
+    {
+        image: articleimage,
+        title: "The Role of Big Data in Business Analytics",
+        author: "David Smith",
+        date: "24th May 2024",
+        url: "#"
+    },
+    {
+        image: articleimage,
+        title: "The Importance of Cybersecurity in the Digital World",
+        author: "Emily Johnson",
+        date: "31st May 2024",
+        url: "#"
+    },
+    {
+        image: articleimage,
+        title: "The Evolution of Mobile Applications",
+        author: "Daniel Brown",
+        date: "7th June 2024",
+        url: "#"
+    }
+];

@@ -11,7 +11,7 @@ export function Sidebar() {
   const path = location.pathname;
 
   return (
-    <aside className="p-4 pl-0 space-y-4 overflow-y-none bg-[#2F187E] shadow-md w-[15rem] relative">
+    <aside className="p-4 pl-0 space-y-4 overflow-y-none bg-[#2F187E] shadow-md w-[15rem] ">
       <div
         className="w-full h-full absolute -z-100
        "
@@ -25,9 +25,9 @@ export function Sidebar() {
       </div>
       <nav className="space-y-2 text-white z-100 absolute">
         <Link
-          to="/dashboard"
+          to="/dashboard/overview"
           className={`px-4 py-4 rounded-r-full pl-8 flex gap-4 hover:text-[#FFA3AB]  ${
-            path === "/dashboard" ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]" : ""
+            path.includes("/dashboard/overview") ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]" : ""
           }`}
         >
           <Category2 className="size-6" />
@@ -36,7 +36,7 @@ export function Sidebar() {
         <Link
           to="/dashboard/project"
           className={`px-4 py-4 rounded-r-full pl-8 flex gap-4 hover:text-[#FFA3AB]  ${
-            path === "/dashboard/project" ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]" : ""
+            path.includes("/dashboard/project") ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]" : ""
           }`}
         >
           <I3Dcube className="size-6" />
@@ -45,7 +45,7 @@ export function Sidebar() {
         <Link
           to="/dashboard/pool"
           className={`px-4 py-4 rounded-r-full pl-8 flex gap-4 hover:text-[#FFA3AB]  ${
-            path === "/dashboard/pool" ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]" : ""
+            path.includes("/dashboard/pool") ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]" : ""
           }`}
         >
           <Chart className="size-6" />
@@ -54,7 +54,7 @@ export function Sidebar() {
         <Link
           to="/dashboard/learn"
           className={`px-4 py-4 rounded-r-full pl-8 flex gap-4 hover:text-[#FFA3AB]  ${
-            path === "/dashboard/learn" ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]" : ""
+            path.includes("/dashboard/learn") ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]" : ""
           }`}
         >
           <Book className="size-6" />
@@ -63,7 +63,9 @@ export function Sidebar() {
         <Link
           to="/dashboard/flamingo-coach"
           className={`px-4 py-4 rounded-r-full pl-8 flex gap-4 hover:text-[#FFA3AB]  ${
-            path === "/dashboard/flamingo-coach" ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]" : ""
+            path.includes("/dashboard/flamingo-coach")
+              ? "bg-gradient-to-r from-[#d6289954] to-[#D62898] text-[#FFA3AB]"
+              : ""
           }`}
         >
           <ShieldTick className="size-6" />

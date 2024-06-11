@@ -11,7 +11,7 @@ const Router: React.FC = () => {
     <BrowserRouter>
       <Routes>
         {/* Common routes */}
-        <Route path="/dashboard" element={<Overview />} />
+        <Route path="/dashboard/overview" element={<Overview />} />
         <Route path="/dashboard/project" element={<Project />} />
         <Route path="/dashboard/pool" element={<Pool />} />
         <Route path="/dashboard/learn" element={<Learn />} />

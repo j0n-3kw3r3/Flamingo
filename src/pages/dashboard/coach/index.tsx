@@ -4,7 +4,9 @@ import { TopBar } from "@/components/TopBar";
 function Coach() {
   return (
     <div className="flex h-screen bg-gray-200">
-      <Sidebar />
+      <div className="  space-y-4 overflow-y-none bg-[#2F187E] shadow-lg w-[15rem] relative ">
+        <Sidebar />
+      </div>
       <div className="flex flex-col flex-grow">
         <TopBar />
         <main className="p-4 overflow-auto">

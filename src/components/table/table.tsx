@@ -13,7 +13,7 @@ export default function Table<TData>({ table }: DataTableProps<TData> & { table:
           return (
             <tr key={index} className="text-left bg-[#FFEFF9]  ">
               {headerGroup.headers.map((header: any) => (
-                <th key={header.id} className="  py-[1.25rem] first:pl-2 text-xs font-normal ">
+                <th key={header.id} className="  py-[1.25rem]  px-6 text-xs font-normal ">
                   {flexRender(header.column.columnDef.header, header.getContext())}
                 </th>
               ))}
@@ -30,7 +30,7 @@ export default function Table<TData>({ table }: DataTableProps<TData> & { table:
           >
             {row.getVisibleCells().map((cell: any) => (
               <>
-                <td key={cell.id} className="py-4 first:pl-2 font-normal text-sm ">
+                <td key={cell.id} className="py-4  px-6 font-normal text-sm ">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               </>

@@ -4,39 +4,85 @@ import { useState } from "react";
 import flg from "../../../assets/fundvolumeflamingo.svg";
 import DashboardChart from "@/components/chart/dashboard";
 import OverviewTable from "@/components/overview";
+import { useNavigate } from "react-router-dom";
+import { articles } from "@/assets/dummy-data";
+import { InfoCircle } from "iconsax-react";
 
 function Overview() {
   const [activeTab, setActiveTab] = useState("overview");
-  const [inputValue, setInputValue] = useState(0);
-  const [conversionRate, setConversionRate] = useState(1489);
-  const [convertedValue, setConvertedValue] = useState(0);
-  const [currency, setCurrency] = useState("USD");
+  const navigate = useNavigate();
 
-  const handleCurrencyChange = (event: any) => {
-    setCurrency(event.target.value);
+  const [fromCurrency, setFromCurrency] = useState("BTC");
+  const [toCurrency, setToCurrency] = useState("USD");
+  const [amount, setAmount] = useState(47334);
+  const [, setConvertedAmount] = useState(47334);
+  const [rate] = useState(1);
+
+  const handleFromCurrencyChange = (event: any) => {
+    setFromCurrency(event.target.value);
   };
 
-  const handleInputChange = (event: any) => {
+  const handleToCurrencyChange = (event: any) => {
+    setToCurrency(event.target.value);
+  };
+
+  const handleAmountChange = (event: any) => {
     const value = event.target.value;
-    setInputValue(value);
-    setConvertedValue(value * conversionRate);
+    setAmount(value);
   };
 
-  const handleRateChange = (event: any) => {
-    setConversionRate(event.target.value);
-    setConvertedValue(inputValue * event.target.value);
+  const convert = () => {
+    // Replace with your conversion logic using an API or library
+    const converted = amount * rate;
+    setConvertedAmount(converted);
   };
+
+  const aboutData = [
+    {
+      title: "Hash",
+      sub: "0xcd48b16....803b9a720",
+      url: "#",
+    },
+    {
+      title: "Whitepaper",
+      sub: "flamingo-1.gitbook.io/user-guide/v/master/",
+      url: "#",
+    },
+    {
+      title: "Market Cap",
+      sub: "$0.000000",
+      url: "#",
+    },
+    {
+      title: "Token Price",
+      sub: "$0.0892",
+      url: "#",
+    },
+    {
+      title: "Total Supply",
+      sub: "-",
+      url: "#",
+    },
+    {
+      title: "Circulating Supply",
+      sub: "-",
+      url: "#",
+    },
+    // More aboutData...
+  ];
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-[#FBFBFB">
-      <Sidebar />
+      <div className="  space-y-4 overflow-y-none bg-[#2F187E] shadow-lg w-[15rem] relative ">
+        <Sidebar />
+      </div>
       <div className="flex flex-col flex-grow relative  ">
         <TopBar />
 
         <main className="grid h-screen overflow-y-auto grid-cols-12 gap-4 p-4">
           <section className=" shadow col-span-5 rounded ">
             <div className="grid grid-cols-2 gap-[.0625rem]">
-              <div className="bg-[#D62898] text-white shadow rounded-tl-lg p-6">
+              <div className="bg-gradient-to-r from-[#30187ee4] to-[#D62898] text-white shadow rounded-tl-lg p-6">
                 <h3 className=" text-xs ">FLM Market Cap</h3>
                 <p className="text-xl mb-4 mt-6 ">$43,000,345.60</p>
                 <div className="flex gap-14">
@@ -72,15 +118,23 @@ function Overview() {
             </div>
           </section>
 
-          <section className="bg-[#2F187E] shadow col-span-7 rounded-lg p-4">
+          <section className="bg-[#2F187E] shadow col-span-7 h-fit rounded-lg p-4">
             <DashboardChart />
           </section>
 
-          <section className="bg-white shadow rounded p-4 col-span-8">
+          <section
+            className={
+              activeTab !== "overview" && activeTab !== "about"
+                ? "bg-white shadow rounded p-4 col-span-8"
+                : "bg-white shadow rounded p-4 col-span-12"
+            }
+          >
             <div className="mb-4 flex justify-between ">
               <div
                 className={`px-4 py-2 ${
-                  activeTab === "overview" ? "text-[#D62898] cursor-pointer" : " cursor-pointer text-[#7F7F7F]"
+                  activeTab === "overview"
+                    ? "text-[#D62898] cursor-pointer border-b-[#D62898] border-b "
+                    : " cursor-pointer text-[#7F7F7F]"
                 }`}
                 onClick={() => setActiveTab("overview")}
               >
@@ -88,7 +142,9 @@ function Overview() {
               </div>
               <div
                 className={`px-4 py-2 ${
-                  activeTab === "pool" ? "text-[#D62898] cursor-pointer" : " cursor-pointer text-[#7F7F7F]"
+                  activeTab === "pool"
+                    ? "text-[#D62898] cursor-pointer border-b-[#D62898] border-b "
+                    : " cursor-pointer text-[#7F7F7F]"
                 }`}
                 onClick={() => setActiveTab("pool")}
               >
@@ -96,64 +152,156 @@ function Overview() {
               </div>
               <div
                 className={`px-4 py-2 ${
-                  activeTab === "analytics" ? "text-[#D62898] cursor-pointer" : " cursor-pointer text-[#7F7F7F]"
-                }`}
-                onClick={() => setActiveTab("analytics")}
-              >
-                Analytics
-              </div>
-              <div
-                className={`px-4 py-2 ${
-                  activeTab === "about" ? "text-[#D62898] cursor-pointer" : " cursor-pointer text-[#7F7F7F]"
+                  activeTab === "about"
+                    ? "text-[#D62898] cursor-pointer border-b-[#D62898] border-b "
+                    : " cursor-pointer text-[#7F7F7F]"
                 }`}
                 onClick={() => setActiveTab("about")}
               >
                 About
               </div>
+              <div
+                className={`px-4 py-2 ${
+                  activeTab === "articles"
+                    ? "text-[#D62898] cursor-pointer border-b-[#D62898] border-b "
+                    : " cursor-pointer text-[#7F7F7F]"
+                }`}
+                onClick={() => setActiveTab("articles")}
+              >
+                Articles
+              </div>
             </div>
 
             {activeTab === "overview" && (
-              <div>
-                <OverviewTable/>
+              <div className=" overflow-x-auto w-[100%] ">
+                <OverviewTable />
               </div>
             )}
-            {activeTab === "pool" && <div>Pool Content</div>}
-            {activeTab === "analytics" && <div>Analytics Content</div>}
-            {activeTab === "about" && <div>About Content</div>}
+            {activeTab === "pool" && (
+              <div className=" overflow-x-auto w-[100%] ">
+                <OverviewTable />
+              </div>
+            )}
+            {activeTab === "about" && (
+              <div>
+                {aboutData.map((data, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-between cursor-pointer border rounded mb-2 p-2 text-xs"
+                    onClick={() => {
+                      navigate(`/dashboard/overview/${data.url}`);
+                    }}
+                  >
+                    <h2 className=" flex items-center gap-1 text-[#928B8B] ">
+                      {data.title}
+                      <InfoCircle className="size-2" />
+                    </h2>
+                    <p className=" ">{data.sub}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {activeTab === "articles" && (
+              <div className=" h-[22.25rem] overflow-y-auto px-2 ">
+                {articles.map((article, index) => (
+                  <div
+                    key={index}
+                    className="flex gap-[.625rem] border border-[#B2AFAF] rounded items-center mb-2 p-2 cursor-pointer "
+                    onClick={() => {
+                      navigate(`/dashboard/overview/${article.url}`);
+                    }}
+                  >
+                    <img src={article.image} alt={article.title} className=" w-16 h-16" />
+                    <div className=" flex flex-col gap-1 text[#B2AFAF]">
+                      <h2>{article.title}</h2>
+                      <div className="flex gap-2 text-xs ">
+                        <p>{article.author}</p>
+                        <span>•</span>
+                        <p>{article.date}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </section>
 
-          <section className="bg-white shadow rounded p-4 col-span-4">
-            <h2 className="text-2xl font-bold mb-2">Conversion Calculator</h2>
-
-            <div className="flex flex-col  space-y-4">
-              <div className="flex space-x-2">
-                <input
-                  type="number"
-                  className="border rounded p-2"
-                  value={inputValue}
-                  onChange={handleInputChange}
-                  placeholder="Enter amount"
-                />
-
-                <select value={currency} onChange={handleCurrencyChange} className="border rounded p-2">
-                  <option value="USD">USD</option>
-                  <option value="EUR">EUR</option>
-                  <option value="JPY">JPY</option>
-                  {/* Add more options as needed */}
-                </select>
+          {activeTab !== "overview" && activeTab !== "about" && (
+            <section className="bg-[#2F187E] shadow h-fit rounded p-6 text-white text-sm col-span-4">
+              <h1 className="  font-normal text-center mb-4">Conversion Calculator</h1>
+              <div className="flex flex-col gap-6">
+                <div className="">
+                  <label className="block mb-2  text-sm " htmlFor="from">
+                    From
+                  </label>
+                  <div className="flex gap-1  ">
+                    <input
+                      id="amount"
+                      type="number"
+                      onChange={handleAmountChange}
+                      className="w-1/2 block px-3 py-2 border-[#D62898] border bg-transparent rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    />
+                    <select
+                      id="from"
+                      value={fromCurrency}
+                      onChange={handleFromCurrencyChange}
+                      className="block w-1/2 px-3 py-2 border-[#D62898] border bg-transparent rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    >
+                      <option value="BTC">Bitcoin (BTC)</option>
+                      <option value="ETH">Ethereum (ETH)</option>
+                      <option value="USD">US Dollar (USD)</option>
+                      {/* Add more currency options here */}
+                    </select>
+                  </div>
+                </div>
+                <div className=" ">
+                  <label className="block mb-2  text-sm " htmlFor="to">
+                    To
+                  </label>
+                  <div className="flex gap-1 ">
+                    <input
+                      id="amount"
+                      type="number"
+                      onChange={handleAmountChange}
+                      className="w-1/2 block px-3 py-2 border-[#D62898] border bg-transparent rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    />
+                    <select
+                      id="to"
+                      value={toCurrency}
+                      onChange={handleToCurrencyChange}
+                      className="block w-1/2 px-3 py-2 border-[#D62898] border bg-transparent rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    >
+                      <option className="bg-transparent " value="BTC">
+                        Bitcoin (BTC)
+                      </option>
+                      <option className="bg-transparent " value="ETH">
+                        Ethereum (ETH)
+                      </option>
+                      <option className="bg-transparent " value="USD">
+                        US Dollar (USD)
+                      </option>
+                      {/* Add more currency options here */}
+                    </select>
+                  </div>
+                </div>
               </div>
 
-              <input
-                type="number"
-                className="border rounded p-2"
-                value={conversionRate}
-                onChange={handleRateChange}
-                placeholder="Enter conversion rate"
-              />
-            </div>
-
-            <div className="mt-2">Converted Value: {convertedValue}</div>
-          </section>
+              <div className=" my-4">
+                <button
+                  onClick={convert}
+                  className="px-4 py-2 bg-gradient-to-r from-[#d6289954] to-[#D62898]  w-full text-white  rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Exchange
+                </button>
+              </div>
+              <div className="flex flex-row ">
+                <div className="w-1/2 mr-2">
+                  <label className="block mb-2  text-sm ">Exchange Rate</label>
+                </div>
+                <div className=" text-white">{rate}</div>
+              </div>
+            </section>
+          )}
         </main>
       </div>
     </div>
