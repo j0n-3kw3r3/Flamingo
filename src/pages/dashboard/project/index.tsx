@@ -1,5 +1,6 @@
 import { Sidebar } from "@/components/Sidebar";
 import { TopBar } from "@/components/TopBar";
+import OverviewTable from "@/components/overview";
 
 
 function Project() {
@@ -12,7 +13,11 @@ function Project() {
         <TopBar />
         <main className="p-4 overflow-auto">
           <h1 className="text-2xl font-semibold">Project</h1>
+
           {/* Add your main content here */}
+          <section>
+            <OverviewTable />
+          </section>
         </main>
       </div>
     </div>
