@@ -1,6 +1,6 @@
 import { Sidebar } from "@/components/Sidebar";
 import { TopBar } from "@/components/TopBar";
-import { useState } from "react";
+import {  useState } from "react";
 import flg from "../../../assets/fundvolumeflamingo.svg";
 import DashboardChart from "@/components/chart/dashboard";
 import OverviewTable from "@/components/overview";
@@ -17,6 +17,13 @@ function Overview() {
   const [amount, setAmount] = useState(0);
   const [convertedAmount, setConvertedAmount] = useState(0);
   const [rate] = useState(66776.8);
+
+
+
+
+
+
+  
 
   const handleFromCurrencyChange = (event: any) => {
     setFromCurrency(event.target.value);

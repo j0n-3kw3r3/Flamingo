@@ -2,16 +2,11 @@ import { formatter } from "@/utils/formatter";
 import { ColumnDef } from "@tanstack/react-table";
 import { Heart } from "iconsax-react";
 import { useState } from "react";
-import kmd from "/node_modules/cryptocurrency-icons/svg/color/kmd.svg";
-import btc from "/node_modules/cryptocurrency-icons/svg/color/btc.svg";
-import eth from "/node_modules/cryptocurrency-icons/svg/color/eth.svg";
-import ltc from "/node_modules/cryptocurrency-icons/svg/color/ltc.svg";
-import doge from "/node_modules/cryptocurrency-icons/svg/color/doge.svg";
-import bcc from "/node_modules/cryptocurrency-icons/svg/color/bcc.svg";
 
 export type Currency = {
   rank: number;
   name: string;
+  symbol: string;
   price: number;
   marketCap: number;
   volume24Hrs: number;
@@ -38,36 +33,27 @@ export const columns: ColumnDef<Currency>[] = [
   },
   { header: "Rank", accessorKey: "rank" },
   {
+    header: "",
+    accessorKey: "symbol",
+    cell: (info: any) => {
+      const coin = info.getValue();
+      const Icons = `../../../node_modules/cryptocurrency-icons/svg/color/${coin.toLowerCase()}.svg`;
+
+      return (
+        <div className="items-center w-8 h-8 -mr-10">
+          <img src={Icons} alt="" className=" w-8 h-8" />
+        </div>
+      );
+    },
+  },
+  {
     header: "Name",
     accessorKey: "name",
     cell: (info: any) => {
       const coin = info.getValue();
-      let image;
-
-      switch (coin) {
-        case "Bitcoin":
-          image = btc;
-          break;
-        case "Litecoin":
-          image = ltc;
-          break;
-        case "Ethereum":
-          image = eth;
-          break;
-        case "Dogecoin":
-          image = doge;
-          break;
-        case "Binance Coin":
-          image = bcc;
-          break;
-        default:
-          image = kmd;
-          break;
-      }
 
       return (
         <div className=" flex gap-2 items-center ">
-          <img src={image} alt="" className=" w-8 h-8" />
           <div className="text-xs">{coin}</div>
         </div>
       );
