@@ -2,7 +2,17 @@ import React from "react";
 import { Sidebar } from "@/components/Sidebar";
 import { TopBar } from "@/components/TopBar";
 import OverviewTable from "@/components/overview";
-import { Chart, Cup, ExportSquare, I3Dcube, Icon, Man } from "iconsax-react";
+import {
+  Chart,
+  Cup,
+  ExportSquare,
+  I3Dcube,
+  Icon,
+  Menu,
+  Filter,
+  MouseSquare,
+} from "iconsax-react";
+import PoolTable from "@/components/pool";
 
 interface barDataProps {
   title: string;
@@ -73,10 +83,28 @@ function Project() {
             )}
           </section>
 
-          <section>
-            <h3 className="text-base">Tokens</h3>
-            
-            <OverviewTable />
+          <section className="bg-white py-6 rounded-[8px] gap-[10px]">
+            <div className="flex justify-between items-center px-6 pb-6">
+              <h3 className="text-base font-medium">Tokens</h3>
+              <div className="items-center gap-[40px] flex">
+                <div className="rounded-[8px] border border-[#D9DADB] gap-[0px] px-4 py-2 flex items-center">
+                  <Filter />
+                  <select className="w-full pr-14 outline-none">
+                    <option value="filter" className="rounded">
+                      Filter
+                    </option>
+                  </select>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="bg-[#D62898] p-2 gap-2 rounded text-white">
+                    <Menu />
+                  </div>
+                  <MouseSquare />
+                </div>
+              </div>
+            </div>
+
+            <PoolTable />
           </section>
         </main>
       </div>
