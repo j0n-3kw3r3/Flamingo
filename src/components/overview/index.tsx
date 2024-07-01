@@ -1,6 +1,6 @@
 import { useReactTable, getCoreRowModel, getPaginationRowModel } from "@tanstack/react-table";
 import { useMemo } from "react";
-import { columns, poolColumns } from "../table/columns/overview";
+import { columns, } from "../table/columns/overview";
 import { Pagination } from "../pagination";
 import { Cryptodata } from "@/assets/dummy-data";
 import Table from "../table/table";

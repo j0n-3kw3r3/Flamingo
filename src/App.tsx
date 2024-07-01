@@ -6,7 +6,7 @@ function App() {
     <>
       <Router />
     </>
-  );c,mn,n
+  );
 }
 
 export default App

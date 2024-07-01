@@ -1,4 +1,3 @@
-import articleimage from "../assets/articleimage.png";
 
 export const Cryptodata = [
   {

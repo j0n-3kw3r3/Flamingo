@@ -1,7 +1,5 @@
-import React from "react";
 import { Sidebar } from "@/components/Sidebar";
 import { TopBar } from "@/components/TopBar";
-import OverviewTable from "@/components/overview";
 import {
   Chart,
   Cup,
@@ -69,7 +67,7 @@ function Project() {
                 <div key={value} className="bg-white p-6 rounded-[8px] w-[50%]">
                   <p className="font-[400] text-base pb-2">{title}</p>
                   <div className="flex items-center justify-between">
-                    <p className="font-bold text-[32px]">{value}</p>
+                    <p className="font-bold text-[2rem]">{value}</p>
                     {IconComponent && (
                       <IconComponent
                         size={size}
@@ -83,11 +81,11 @@ function Project() {
             )}
           </section>
 
-          <section className="bg-white py-6 rounded-[8px] gap-[10px]">
+          <section className="bg-white py-6 rounded-[.5rem] gap-[.625rem]">
             <div className="flex justify-between items-center px-6 pb-6">
               <h3 className="text-base font-medium">Tokens</h3>
               <div className="items-center gap-[40px] flex">
-                <div className="rounded-[8px] border border-[#D9DADB] gap-[0px] px-4 py-2 flex items-center">
+                <div className="rounded-[8px] border border-[#D9DADB] gap-2 px-4 py-2 flex items-center">
                   <Filter />
                   <select className="w-full pr-14 outline-none">
                     <option value="filter" className="rounded">
