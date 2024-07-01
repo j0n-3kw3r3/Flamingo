@@ -1,6 +1,6 @@
 import { Sidebar } from "@/components/Sidebar";
 import { TopBar } from "@/components/TopBar";
-import {  useState } from "react";
+import { useState } from "react";
 import flg from "../../../assets/fundvolumeflamingo.svg";
 import DashboardChart from "@/components/chart/dashboard";
 import OverviewTable from "@/components/overview";
@@ -17,13 +17,6 @@ function Overview() {
   const [amount, setAmount] = useState(0);
   const [convertedAmount, setConvertedAmount] = useState(0);
   const [rate] = useState(66776.8);
-
-
-
-
-
-
-  
 
   const handleFromCurrencyChange = (event: any) => {
     setFromCurrency(event.target.value);
@@ -113,10 +106,16 @@ function Overview() {
                 </div>
               </div>
               <div className="bg-[#FFEFF9] text-black shadow rounded-br-lg p-6 relative ">
-                <img src={flg} alt="" className="absolute top-0 right-0  h-full" />
+                <img
+                  src={flg}
+                  alt=""
+                  className="absolute top-0 right-0  h-full"
+                />
                 <div className="absolute">
                   <h3 className=" text-xs ">Flund Volume</h3>
-                  <p className="text-xl mb-4 mt-6 text-green ">$4,567,889.567</p>
+                  <p className="text-xl mb-4 mt-6 text-green ">
+                    $4,567,889.567
+                  </p>
                   <div className="flex gap-2">
                     <span className="text-[#958F8F]">APY</span>
                     <span className="text-green-500">+22.6%</span>
@@ -212,23 +211,34 @@ function Overview() {
             {activeTab === "articles" && (
               <div className=" h-[22.25rem] overflow-y-auto px-2 ">
                 {articles.map((article, index) => (
-                  <div
-                    key={index}
-                    className="flex gap-[.625rem] border border-[#B2AFAF] rounded items-center mb-2 p-2 cursor-pointer "
-                    onClick={() => {
-                      navigate(`/dashboard/overview/${article.url}`);
-                    }}
+                  <a
+                    href="https://medium.com/@flamingofinance/fusd-optimization-993bc5d49636"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <img src={article.image} alt={article.title} className=" w-16 h-16" />
-                    <div className=" flex flex-col gap-1 text[#B2AFAF]">
-                      <h2>{article.title}</h2>
-                      <div className="flex gap-2 text-xs ">
-                        <p>{article.author}</p>
-                        <span>•</span>
-                        <p>{article.date}</p>
+                    {" "}
+                    <div
+                      key={index}
+                      className="flex gap-[.625rem] border border-[#B2AFAF] rounded items-center mb-2 p-2 cursor-pointer "
+                      // onClick={() => {
+                      //   navigate(`/dashboard/overview/${article.url}`);
+                      // }}
+                    >
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-16 h-16 object-cover object-top-left"
+                      />
+                      <div className=" flex flex-col gap-1 text[#B2AFAF]">
+                        <h2 className="font-bold">{article.title}</h2>
+                        <div className="flex gap-2 text-xs ">
+                          <p>{article.author}</p>
+                          <span>•</span>
+                          <p>{article.date}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
             )}

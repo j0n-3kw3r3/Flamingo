@@ -1,17 +1,20 @@
-import { useReactTable, getCoreRowModel, getPaginationRowModel } from "@tanstack/react-table";
+import {
+  useReactTable,
+  getCoreRowModel,
+  getPaginationRowModel,
+} from "@tanstack/react-table";
 import { useMemo } from "react";
-import { columns, } from "../table/columns/overview";
+import { poolColumns } from "../table/columns/overview";
 import { Pagination } from "../pagination";
 import { Cryptodata } from "@/assets/dummy-data";
 import Table from "../table/table";
 
-
-function OverviewTable() {
+function PoolTable() {
   const data = useMemo(() => Cryptodata, []);
 
   const table = useReactTable({
     data,
-    columns,
+    columns: poolColumns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(), //load client-side pagination code
   });
@@ -28,4 +31,4 @@ function OverviewTable() {
   );
 }
 
-export default OverviewTable;
+export default PoolTable;
